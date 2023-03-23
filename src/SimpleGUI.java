@@ -24,11 +24,7 @@ public class SimpleGUI extends JFrame implements ActionListener, ChangeListener 
     private JLabel welcomeLabel;
     private JCheckBox checkBox1;
     private JCheckBox checkBox2;
-    private JMenuItem menuItem1;
-    private JMenuItem menuItem2;
-    private JMenuItem helpMenuItem1;
-    private JMenuItem helpMenuItem2;
-    private JSlider slider;
+
     public SimpleGUI() {
         super("Frame title");
         init();
@@ -43,13 +39,13 @@ public class SimpleGUI extends JFrame implements ActionListener, ChangeListener 
         // create the MenuBar and menu components
         JMenuBar menuBar = new JMenuBar();
         JMenu menu1 = new JMenu("File");
-        menuItem1 = new JMenuItem("Open");
-        menuItem2 = new JMenuItem("Save as");
+        JMenuItem menuItem1 = new JMenuItem("Open");
+        JMenuItem menuItem2 = new JMenuItem("Save as");
         menu1.add(menuItem1);
         menu1.add(menuItem2);
         JMenu menu2 = new JMenu("Help");
-        helpMenuItem1 = new JMenuItem("FAQ");
-        helpMenuItem2 = new JMenuItem("About");
+        JMenuItem helpMenuItem1 = new JMenuItem("FAQ");
+        JMenuItem helpMenuItem2 = new JMenuItem("About");
         menu2.add(helpMenuItem1);
         menu2.add(helpMenuItem2);
 
@@ -65,7 +61,7 @@ public class SimpleGUI extends JFrame implements ActionListener, ChangeListener 
         welcomeLabel.setFont(new Font("Helvetica", Font.BOLD, 20));
 
         // create slider and adjust settings
-        slider = new JSlider(0, 40, 20);
+        JSlider slider = new JSlider(0, 40, 20);
         slider.setMinorTickSpacing(1);
         slider.setMajorTickSpacing(5);
         slider.setPaintTicks(true);
@@ -83,6 +79,8 @@ public class SimpleGUI extends JFrame implements ActionListener, ChangeListener 
         textField = new JTextField(10); // accepts upto 10 characters
         JButton sendButton = new JButton("Send");
         JButton resetButton = new JButton("Reset");
+        JButton openButton = new JButton("Open");
+
 
         // create checkboxes
         checkBox1 = new JCheckBox("Yes");
@@ -98,6 +96,7 @@ public class SimpleGUI extends JFrame implements ActionListener, ChangeListener 
         panel.add(textField);
         panel.add(sendButton);
         panel.add(resetButton);
+        panel.add(openButton);
         panel.add(checkBox1);
         panel.add(checkBox2);
 
@@ -118,6 +117,7 @@ public class SimpleGUI extends JFrame implements ActionListener, ChangeListener 
         //event handling
         sendButton.addActionListener(this); //button listens to the gui (this) ; when the button is clicked, GUI knows and sends ot button
         resetButton.addActionListener(this);
+        openButton.addActionListener(this);
         menuItem1.addActionListener(this);
         menuItem2.addActionListener(this);
         helpMenuItem1.addActionListener(this);
@@ -145,6 +145,8 @@ public class SimpleGUI extends JFrame implements ActionListener, ChangeListener 
                 textField.setText("");
                 checkBox1.setSelected(false);
                 checkBox2.setSelected(false);
+            } else if (text.equals("Open")) {
+                //create a new window
             }
         } else if (source instanceof JMenuItem) {
             JMenuItem item = (JMenuItem) source;
