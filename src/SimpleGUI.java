@@ -146,10 +146,40 @@ public class SimpleGUI extends JFrame implements ActionListener, ChangeListener 
                 checkBox1.setSelected(false);
                 checkBox2.setSelected(false);
             } else if (text.equals("Open")) {
-                //create a new window
+                JFrame frame = new JFrame("Open File");
+
+                frame.setDefaultCloseOperation(JFrame .EXIT_ON_CLOSE);
+                frame.setSize(250, 200);
+                frame.setLocation(300, 20);
+
+                JLabel label = new JLabel("Hello!");
+
+                JPanel panel = new JPanel();
+                panel.add(label);
+
+                frame.add(panel);
+
+                frame.setVisible(true);
+
             }
         } else if (source instanceof JMenuItem) {
             JMenuItem item = (JMenuItem) source;
+            if (item.getText().equals("Open")) {
+                JFrame frame = new JFrame("New Window");
+
+                frame.setDefaultCloseOperation(JFrame .EXIT_ON_CLOSE);
+                frame.setSize(250, 200);
+                frame.setLocation(300, 20);
+
+                JLabel label = new JLabel("Hello!");
+
+                JPanel panel = new JPanel();
+                panel.add(label);
+
+                frame.add(panel);
+
+                frame.setVisible(true);
+            }
             String text = item.getText();
             textField.setText(text);
         }
